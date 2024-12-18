@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Productos Electrónicos</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        a {
+        text-decoration: none;
+        color: #ffffff;
+        }
+
+        nav {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        width: 1100px;
+        margin: 0 auto;
+        padding: 33px;
+        }
+        a:hover{
+        color: aqua;
+        }
+        .slider {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .categories {
+            margin: 20px;
+        }
+        .category {
+            margin: 10px 0;
+        }
+        .products {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            margin: 10px 0; /* Espaciado vertical */
+        }
+        .product {
+            width: 30%; /* Ajusta el ancho de cada producto */
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s; /* Añade transición para hover */
+        }
+        .product:hover {
+            transform: scale(1.05); /* Aumenta el tamaño en hover */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Aumenta la sombra en hover */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        #cart-summary {
+            display: none;
+            background-color: #f8f8f8;
+            padding: 10px;
+            margin: 20px;
+            border: 1px solid #ddd;
+        }
+        #product-details {
+            display: none;
+            background-color: #f8f8f8;
+            padding: 10px;
+            margin: 20px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 5px 0;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#seccion1">Celulares</a>
+            <a href="#seccion5">Equipo de Cómputo</a>
+            <a href="#seccion2">Nuestros servicios</a>
+            <a href="#seccion4">Tables</a>
+        </nav>
+    </header>
+
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <h3>Smartphone X Pro</h3>
+                <img src="https://cdn-files.kimovil.com/default/0006/48/thumb_547794_default_big.jpeg" alt="Smartphone X Pro">
+                <p>Smartphone con cámara de 108MP y batería de larga duración</p>
+                <p>Precio: S/1,500</p>
+                <button onclick="addToCart('Smartphone X Pro', 1500)">Añadir al carrito</button>
+                <button onclick="showDetails('Smartphone X Pro')">Ver detalles</button>
+            </div>
+            <div class="slide">
+                <h3>Tablet 2 en 1</h3>
+                <img src="https://m.media-amazon.com/images/I/71-v0EiTswL.jpg" alt="Tablet 2 en 1">
+                <p>Tablet convertible en laptop, perfecta para trabajar y jugar</p>
+                <p>Precio: S/1,200</p>
+                <button onclick="addToCart('Tablet 2 en 1', 1200)">Añadir al carrito</button>
+                <button onclick="showDetails('Tablet 2 en 1')">Ver detalles</button>
+            </div>
+            <div class="slide">
+                <h3>Tablet de Entretenimiento</h3>
+                <img src="https://image.made-in-china.com/202f0j00qNQkGIconybH/2024-Brand-New-Portable-Android-11-0-7-Inch-2-32GB-Tablet-PC-for-Kids-Gaming-and-Business-Entertainment-with-Camera-0-3MP-2MP.webp" alt="Tablet de Entretenimiento">
+                <p>Tablet ideal para ver series y películas</p>
+                <p>Precio: S/700</p>
+                <button onclick="addToCart('Tablet de Entretenimiento', 700)">Añadir al carrito</button>
+                <button onclick="showDetails('Tablet de Entretenimiento')">Ver detalles</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="seccion2" class="reparacion">
+        <h2>Nuestros servicios</h2>
+        <div class="products">
+            <div class="product">
+                <h3>Reparacion</h3>
+                <img src="/Codigo HTML CSS JAVASCRIPT/img/img1.jpeg" alt="Smartphone A">
+            </div>
+            <div class="product">
+                <h3>Reparacion</h3>
+                <img src="/Codigo HTML CSS JAVASCRIPT/img/img2.jpeg" alt="Smartphone B">
+            </div>
+            <div class="product">
+                <h3>Reparacion</h3>
+                <img src="/Codigo HTML CSS JAVASCRIPT/img/img3.jpeg" alt="Smartphone C">
+            </div>
+        </div>
+
+
+    <div id="seccion1" class="categories">
+        <h2>Celulares</h2>
+        <div class="products">
+            <div class="product">
+                <h3>Smartphone A</h3>
+                <img src="https://realzzastore.com.pe/wp-content/uploads/2022/12/IMGPRD-CELULARES-20867-01_CELULAR-LIBERADO-SAMSUNG-GALAXY-A23-NEGRO.png" alt="Smartphone A">
+                <p>Smartphone con pantalla de 6.5", 128GB de almacenamiento</p>
+                <p>Precio: S/1,200</p>
+                <button onclick="addToCart('Smartphone A', 1200)">Añadir al carrito</button>
+                <button onclick="showDetails('Smartphone A')">Ver detalles</button>
+            </div>
+            <div class="product">
+                <h3>Smartphone B</h3>
+                <img src="https://realzzastore.com.pe/wp-content/uploads/2024/02/Mesa-de-trabajo-4-copia-1.png" alt="Smartphone B">
+                <p>Smartphone con cámara triple de 64MP</p>
+                <p>Precio: S/1,300</p>
+                <button onclick="addToCart('Smartphone B', 1300)">Añadir al carrito</button>
+                <button onclick="showDetails('Smartphone B')">Ver detalles</button>
+            </div>
+            <div class="product">
+                <h3>Smartphone C</h3>
+                <img src="https://oechsle.vteximg.com.br/arquivos/ids/9396670-1000-1000/image-d6931295cc54423cbb64adbc37375630.jpg?v=637920459488670000" alt="Smartphone C">
+                <p>Smartphone con batería de larga duración</p>
+                <p>Precio: S/1,100</p>
+                <button onclick="addToCart('Smartphone C', 1100)">Añadir al carrito</button>
+                <button onclick="showDetails('Smartphone C')">Ver detalles</button>
+            </div>
+        </div>
+
+        <h2 id="seccion4">Tablets</h2>
+        <div class="products">
+            <div class="product">
+                <h3>Tablet A</h3>
+                <img src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaPE/129375426_01/w=1500,h=1500,fit=pad" alt="Tablet A">
+                <p>Tablet con pantalla de 10", ideal para ver videos</p>
+                <p>Precio: S/800</p>
+                <button onclick="addToCart('Tablet A', 800)">Añadir al carrito</button>
+                <button onclick="showDetails('Tablet A')">Ver detalles</button>
+            </div>
+            <div class="product">
+                <h3>Tablet B</h3>
+                <img src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaPE/119117232_01/w=1500,h=1500,fit=pad" alt="Tablet B">
+                <p>Tablet con lápiz óptico incluido</p>
+                <p>Precio: S/900</p>
+                <button onclick="addToCart('Tablet B', 900)">Añadir al carrito</button>
+                <button onclick="showDetails('Tablet B')">Ver detalles</button>
+            </div>
+            <div class="product">
+                <h3>Tablet C</h3>
+                <img src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaPE/19569166_1/w=1500,h=1500,fit=pad" alt="Tablet C">
+                <p>Tablet ligera y portátil, perfecta para llevar a todas partes</p>
+                <p>Precio: S/750</p>
+                <button onclick="addToCart('Tablet C', 750)">Añadir al carrito</button>
+                <button onclick="showDetails('Tablet C')">Ver detalles</button>
+            </div>
+        </div>
+
+        <h2 id="seccion5">Equipos de Cómputo</h2>
+        <div class="products">
+            <div class="product">
+                <h3>Computadora de Escritorio A</h3>
+                <img src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaPE/129112871_01/w=1500,h=1500,fit=pad" alt="Computadora de Escritorio A">
+                <p>Computadora de escritorio con procesador Intel i5</p>
+                <p>Precio: S/2,200</p>
+                <button onclick="addToCart('Computadora de Escritorio A', 2200)">Añadir al carrito</button>
+                <button onclick="showDetails('Computadora de Escritorio A')">Ver detalles</button>
+            </div>
+            <div class="product">
+                <h3>Computadora Portátil A</h3>
+                <img src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaPE/883322793_001/w=1500,h=1500,fit=pad" alt="Computadora Portátil A">
+                <p>Computadora portátil ligera y potente</p>
+                <p>Precio: S/2,800</p>
+                <button onclick="addToCart('Computadora Portátil A', 2800)">Añadir al carrito</button>
+                <button onclick="showDetails('Computadora Portátil A')">Ver detalles</button>
+            </div>
+            <div class="product">
+                <h3>Computadora de Juegos</h3>
+                <img src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaPE/20402256_001/w=1500,h=1500,fit=pad" alt="Computadora de Juegos">
+                <p>Computadora de juegos con tarjeta gráfica NVIDIA RTX</p>
+                <p>Precio: S/3,500</p>
+                <button onclick="addToCart('Computadora de Juegos', 3500)">Añadir al carrito</button>
+                <button onclick="showDetails('Computadora de Juegos')">Ver detalles</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-summary">
+        <h2>Resumen del Carrito</h2>
+        <div id="cart-items"></div>
+        <p id="total"></p>
+        <button onclick="checkout()">Proceder al Pago</button>
+    </div>
+
+    <div id="product-details">
+        <h2>Detalles del Producto</h2>
+        <div id="details-content"></div>
+        <button onclick="closeDetails()">Cerrar</button>
+    </div>
+
+    <footer>
+        <p>&copy; Integrantes: Dora Isabel Huaraca Escobar | Laura Ibet Huaraca Escobar | Montanchez Cabezudo Beliza - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        let currentSlide = 0;
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            alert(`${product} añadido al carrito`);
+            updateCartSummary();
+        }
+
+        function updateCartSummary() {
+            const cartItems = document.getElementById('cart-items');
+            const total = document.getElementById('total');
+            cartItems.innerHTML = '';
+            let sum = 0;
+
+            cart.forEach(item => {
+                cartItems.innerHTML += `<p>${item.product} - S/${item.price}</p>`;
+                sum += item.price;
+            });
+
+            total.innerText = `Total: S/${sum}`;
+            document.getElementById('cart-summary').style.display = cart.length > 0 ? 'block' : 'none';
+        }
+
+        function showDetails(product) {
+            const detailsContent = document.getElementById('details-content');
+            detailsContent.innerHTML = `<p>Detalles de ${product}: información adicional sobre el producto.</p>`;
+            document.getElementById('product-details').style.display = 'block';
+        }
+
+        function closeDetails() {
+            document.getElementById('product-details').style.display = 'none';
+        }
+
+        function checkout() {
+            alert('Procediendo al pago...');
+        }
+
+        // Slider functionality
+        function nextSlide() {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            currentSlide = (currentSlide + 1) % totalSlides;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function previousSlide() {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
